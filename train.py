@@ -218,7 +218,7 @@ def cli_main():
         callbacks=[checkpoint_callback],
         resume_from_checkpoint=args.resume,
         default_root_dir="saved/" + config["name"],
-        deterministic=True,
+        deterministic=False,
     )
     trainer.fit(model, data_loader, valid_data_loader)
     print('Best checkpoint saved at: {}'.format(checkpoint_callback.best_model_path))
