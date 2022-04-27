@@ -155,25 +155,28 @@ def cli_main():
         help="path to latest checkpoint (default: None)",
     )
     parser.add_argument(
-        "-d",
-        "--device",
-        default=None,
-        type=str,
-        help="indices of GPUs to enable (default: all)",
+        "-g",
+        "--n_gpu",
+        default=1,
+        type=int,
+        help="number of GPUs to enable (default: 1)",
     )
     parser.add_argument(
         "--num_workers",
-        default=10,
-        type=str,
-        help="number of workers used in the data loader (default: 10)",
+        default=8,
+        type=int,
+        help="number of workers used in the data loader (default: 8)",
     )
     parser.add_argument("-e", "--n_epochs", default=100, type=int, help="if given, override the num")
 
     args = parser.parse_args()
     config = json.load(open(args.config))
 
-    if args.device is not None:
-        config["device"] = args.device
+    # if args.device is not None:
+    #     config["device"] = args.device
+
+    if args.n_gpu != 1:
+        config["n_gpu"] = args.n_gpu
 
     # data
     def get_instance(module, name, config, *args, **kwargs):
@@ -209,7 +212,7 @@ def cli_main():
         mode="min",
     )
     trainer = pl.Trainer(
-        gpus=args.device,
+        gpus=args.n_gpu,
         max_epochs=args.n_epochs,
         accumulate_grad_batches=config["accumulate_grad_batches"],
         callbacks=[checkpoint_callback],
