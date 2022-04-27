@@ -218,7 +218,7 @@ def cli_main():
         deterministic=True,
     )
     trainer.fit(model, data_loader, valid_data_loader)
-
+    print('Best checkpoint saved at: {}'.format(checkpoint_callback.best_model_path))
 
 if __name__ == "__main__":
     cli_main()
