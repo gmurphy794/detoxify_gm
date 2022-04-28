@@ -22,11 +22,12 @@ def move_to(obj, device):
         raise TypeError("Invalid type for move_to")
 
 
-def get_model(model_type, model_name, num_classes):
+def get_model_and_tokenizer(model_type, model_name, tokenizer_name, num_classes):
     model = getattr(transformers, model_name).from_pretrained(model_type, num_labels=num_classes)
-    return model
-
-def get_tokenizer(model_type, tokenizer_name):
     tokenizer = getattr(transformers, tokenizer_name).from_pretrained(model_type, model_max_length=512)
+    return model, tokenizer
 
-    return tokenizer
+# def get_tokenizer(model_type, tokenizer_name):
+#     tokenizer = getattr(transformers, tokenizer_name).from_pretrained(model_type, model_max_length=512)
+
+#     return tokenizer

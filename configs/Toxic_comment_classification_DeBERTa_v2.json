@@ -9,7 +9,8 @@
         "args": {
             "num_classes": 6,
             "model_type": "microsoft/deberta-v3-small",
-            "model_name": "DebertaV2ForSequenceClassification"
+            "model_name": "DebertaV2ForSequenceClassification",
+            "tokenizer_name": "DebertaV2Tokenizer"
         }
     },
     "dataset": {
@@ -25,9 +26,7 @@
                 "threat",
                 "insult",
                 "identity_attack"
-            ],
-            "model_type": "microsoft/deberta-v3-small",
-            "tokenizer_name": "DebertaV2Tokenizer"
+            ]
         }
     },
     "optimizer": {
