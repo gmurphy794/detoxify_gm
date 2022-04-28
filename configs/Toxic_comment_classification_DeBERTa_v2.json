@@ -1,5 +1,5 @@
 {
-    "name": "Jigsaw_DeBERTa",
+    "name": "Jigsaw_DeBERTa_v2",
     "n_gpu": 1,
     "batch_size": 10,
     "accumulate_grad_batches": 3,
@@ -26,7 +26,8 @@
                 "threat",
                 "insult",
                 "identity_attack"
-            ]
+            ],
+            "tokenizer_name": "DebertaV2Tokenizer"
         }
     },
     "optimizer": {

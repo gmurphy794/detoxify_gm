@@ -81,7 +81,7 @@ class JigsawDataOriginal(JigsawData):
         train=True,
         add_test_labels=True,
         classes=["toxic"],
-        tokenizer = get_tokenizer(**self.model_args)
+        tokenizer_name = 'tokenizer'
     ):
 
         super().__init__(
@@ -91,7 +91,7 @@ class JigsawDataOriginal(JigsawData):
             add_test_labels=add_test_labels,
         )
         self.classes = classes
-        self.tokenizer = tokenizer
+        self.tokenizer = get_tokenizer(tokenizer_name)
 
     def __getitem__(self, index):
         meta = {}
