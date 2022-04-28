@@ -2,6 +2,7 @@ import datasets
 import numpy as np
 import pandas as pd
 import torch
+from src.utils import get_tokenizer
 from torch.utils.data.dataset import Dataset
 from tqdm import tqdm
 
@@ -80,6 +81,7 @@ class JigsawDataOriginal(JigsawData):
         train=True,
         add_test_labels=True,
         classes=["toxic"],
+        tokenizer = get_tokenizer(**self.model_args)
     ):
 
         super().__init__(
@@ -89,19 +91,20 @@ class JigsawDataOriginal(JigsawData):
             add_test_labels=add_test_labels,
         )
         self.classes = classes
+        self.tokenizer = tokenizer
 
     def __getitem__(self, index):
         meta = {}
         entry = self.data[index]
         text_id = entry["id"]
         text = entry["comment_text"]
-
+        data = self.tokenizer(text, return_tensors="pt", truncation=True, padding=True)
         target_dict = {label: value for label, value in entry.items() if label in self.classes}
 
         meta["multi_target"] = torch.tensor(list(target_dict.values()), dtype=torch.int32)
         meta["text_id"] = text_id
 
-        return text, meta
+        return data, meta
 
 
 class JigsawDataBias(JigsawData):

@@ -7,6 +7,7 @@ import src.data_loaders as module_data
 import torch
 from pytorch_lightning.callbacks import ModelCheckpoint
 from src.utils import get_model_and_tokenizer
+from src.utils import get_model
 from torch.nn import functional as F
 from torch.utils.data import DataLoader
 
@@ -23,7 +24,8 @@ class ToxicClassifier(pl.LightningModule):
         self.save_hyperparameters()
         self.num_classes = config["arch"]["args"]["num_classes"]
         self.model_args = config["arch"]["args"]
-        self.model, self.tokenizer = get_model_and_tokenizer(**self.model_args)
+        # self.model, self.tokenizer = get_model_and_tokenizer(**self.model_args)
+        self.model = get_model(**self.model_args)
         self.bias_loss = False
 
         if "loss_weight" in config:
@@ -37,7 +39,8 @@ class ToxicClassifier(pl.LightningModule):
         self.config = config
 
     def forward(self, x):
-        inputs = self.tokenizer(x, return_tensors="pt", truncation=True, padding=True).to(self.model.device)
+        #inputs = self.tokenizer(x, return_tensors="pt", truncation=True, padding=True).to(self.model.device)
+        inputs = inputs.to(self.model.device)
         outputs = self.model(**inputs)[0]
         return outputs
 
