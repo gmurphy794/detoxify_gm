@@ -27,6 +27,7 @@
                 "insult",
                 "identity_attack"
             ],
+            "model_type": "microsoft/deberta-v3-small",
             "tokenizer_name": "DebertaV2Tokenizer"
         }
     },
