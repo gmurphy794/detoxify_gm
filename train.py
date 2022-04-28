@@ -7,7 +7,6 @@ import src.data_loaders as module_data
 import torch
 from pytorch_lightning.callbacks import ModelCheckpoint
 from src.utils import get_model_and_tokenizer
-from src.utils import get_model
 from torch.nn import functional as F
 from torch.utils.data import DataLoader
 

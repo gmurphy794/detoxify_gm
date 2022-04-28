@@ -2,7 +2,6 @@ import datasets
 import numpy as np
 import pandas as pd
 import torch
-from src.utils import get_tokenizer
 from torch.utils.data.dataset import Dataset
 from tqdm import tqdm
 
@@ -80,9 +79,7 @@ class JigsawDataOriginal(JigsawData):
         test_csv_file="jigsaw_data/test.csv",
         train=True,
         add_test_labels=True,
-        classes=["toxic"],
-        model_type ='model',
-        tokenizer_name = 'tokenizer'
+        classes=["toxic"]
     ):
 
         super().__init__(
