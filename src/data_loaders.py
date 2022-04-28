@@ -89,7 +89,7 @@ class JigsawDataOriginal(JigsawData):
             add_test_labels=add_test_labels,
         )
         self.classes = classes
-        self.tokenizer = get_tokenizer(model_type, tokenizer_name)
+
 
     def __getitem__(self, index):
         meta = {}
