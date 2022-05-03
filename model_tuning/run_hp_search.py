@@ -7,6 +7,8 @@ import argparse
 import src.data_loaders as module_data
 from torch.utils.data import DataLoader
 import finetuning_utils
+from ray import tune
+from ray.tune.suggest.bayesopt import BayesOptSearch
 import json
 
 
