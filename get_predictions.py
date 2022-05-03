@@ -54,8 +54,6 @@ def run(input_obj, config, dest_file, from_ckpt, device="cpu"):
 
 if __name__ == "__main__":
     # args
-    run(input_obj, config, dest_file, from_ckpt)
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--input",
