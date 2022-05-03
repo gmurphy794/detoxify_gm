@@ -17,11 +17,6 @@ from transformers import TrainingArguments, Trainer
 parser = argparse.ArgumentParser(
     description="Run a hyperparameter search for finetuning a DeBERTa model on the Jigsaw dataset."
 )
-parser.add_argument(
-    "data_dir",
-    type=str,
-    help="Directory containing the BoolQ dataset. Can be downloaded from https://dl.fbaipublicfiles.com/glue/superglue/data/v2/BoolQ.zip.",
-)
     
 parser.add_argument(
     "-c",
