@@ -50,7 +50,7 @@ def run(input_obj, config, dest_file, from_ckpt, device="cpu"):
                 "insult",
                 "identity_attack"]
     
-    out = pd.DataFrame(preds, colummns = column_names)
+    out = pd.DataFrame(preds, columns = column_names)
     out.to_csv(dest_file, index=False)
 
 
