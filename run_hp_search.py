@@ -112,7 +112,7 @@ if __name__ == "__main__":
     trainer = Trainer(
         args=training_args,
         gpus=args.n_gpu,
-        tokenizer=tokenizer,
+        # tokenizer=tokenizer,
         accumulate_grad_batches=config["accumulate_grad_batches"],
         train_dataset=data_loader,
         eval_dataset=valid_data_loader,
