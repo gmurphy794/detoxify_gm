@@ -30,6 +30,14 @@ if __name__ == "__main__":
     )   
 
     parser.add_argument(
+        "-g",
+        "--n_gpu",
+        default=1,
+        type=int,
+        help="number of GPUs to enable (default: 1)",
+    )
+
+    parser.add_argument(
         "-p",
         "--checkpoint",
         default=None,
