@@ -31,7 +31,7 @@ def run(input_obj, config, dest_file, from_ckpt, device="cpu"):
     preds = []  
     with torch.no_grad():
         i = 0
-        while i < range(len(df.shape[0])):
+        while i < range(df.shape[0]):
             try:
                 text = list(df['comment_for_evaluation'][i:i+10].values)
             except:
