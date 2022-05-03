@@ -111,7 +111,7 @@ if __name__ == "__main__":
 
     trainer = Trainer(
         args=training_args,
-        gpus=args.n_gpu,
+        # gpus=args.n_gpu,
         # tokenizer=tokenizer,
         accumulate_grad_batches=config["accumulate_grad_batches"],
         train_dataset=data_loader,
@@ -121,16 +121,16 @@ if __name__ == "__main__":
         compute_metrics=finetuning_utils.compute_metrics,
     )
 
-    trainer = pl.Trainer(
-        gpus=args.n_gpu,
-        max_epochs=args.n_epochs,
-        accumulate_grad_batches=config["accumulate_grad_batches"],
-        resume_from_checkpoint=args.resume,
-        default_root_dir="saved/" + config["name"],
-        deterministic=False,
-        model_init=finetuning_utils.model_init,
-        compute_metrics=finetuning_utils.compute_metrics,
-    )
+    # trainer = pl.Trainer(
+    #     gpus=args.n_gpu,
+    #     max_epochs=args.n_epochs,
+    #     accumulate_grad_batches=config["accumulate_grad_batches"],
+    #     resume_from_checkpoint=args.resume,
+    #     default_root_dir="saved/" + config["name"],
+    #     deterministic=False,
+    #     model_init=finetuning_utils.model_init,
+    #     compute_metrics=finetuning_utils.compute_metrics,
+    # )
 
     best_trial = trainer.hyperparameter_search(
         hp_space=lambda _:hp_space,
