@@ -4,6 +4,7 @@ import torch
 import pandas as pd
 from src.finetuning_utils import model_init
 import numpy as np
+import json
 
 
 def load_text(csv_file):
@@ -22,6 +23,7 @@ def run(input_obj, config, dest_file, from_ckpt, device="cpu"):
     df = load_text(input_obj)
     base_path = 'saved/checkpoints/'
     checkpoint_path = base_path + from_ckpt
+    config = json.load(open(args.config))
     model = model_init(config, checkpoint_path)
     model.eval()
     model.to(device)
