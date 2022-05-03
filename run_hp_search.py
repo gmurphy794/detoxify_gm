@@ -48,7 +48,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     config = json.load(open(args.config))
 
-    base_path = 'saved/checkpoints'
+    base_path = 'saved/checkpoints/'
     checkpoint_path = base_path + args.checkpoint
 
     # Since the labels for the test set have not been released, we will use half of the
