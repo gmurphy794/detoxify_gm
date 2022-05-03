@@ -66,7 +66,7 @@ if __name__ == "__main__":
     data_loader = DataLoader(
         dataset,
         batch_size=int(config["batch_size"]),
-        num_workers=args.num_workers,
+        num_workers=8,
         shuffle=True,
         drop_last=True,
         pin_memory=True,
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     valid_data_loader = DataLoader(
         val_dataset,
         batch_size=config["batch_size"],
-        num_workers=args.num_workers,
+        num_workers=8,
         shuffle=False,
     )
 
